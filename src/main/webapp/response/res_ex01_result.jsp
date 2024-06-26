@@ -14,9 +14,11 @@
 	} else {
 		response.sendRedirect("res_ex01_no.jsp");
 	}
+	// 필요한 부분은 자바코드 블록 뿐 -> servlet 으로 자바문만 작성
 	// 자바 servlet 으로 변경할 예정
 	
 %>
+<!-- 아래 내용은 삭제해도 무방하다 -->
 <!DOCTYPE html>
 <html>
 <head>
