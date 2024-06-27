@@ -23,10 +23,10 @@ public class LogoutServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		response.sendRedirect("actionTag/forward_ex03.jsp");
+//		response.sendRedirect("actionTag/forward_ex03.jsp");
 		
-//		RequestDispatcher dp = request.getRequestDispatcher("actionTag/forward_ex03.jsp");
-//		dp.forward(request, response);
+		RequestDispatcher dp = request.getRequestDispatcher("actionTag/forward_ex03.jsp");
+		dp.forward(request, response);
 	}
 
 }
