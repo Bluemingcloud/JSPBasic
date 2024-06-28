@@ -1,7 +1,7 @@
 package com.model;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
+//import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -103,8 +103,9 @@ public class DepartmentDAO {
 	
 	public DepartmentDTO getInfo(int departmentId) {
 		
-		DepartmentDTO dto = new DepartmentDTO();
-		String sql = "SELECT D.DEPARTMENT_NAME, "
+//		DepartmentDTO dto = new DepartmentDTO();
+		DepartmentDTO dto = null; // null 이 반환되면 값이 없음을 알 수 있다.
+		String sql = "SELECT D.*, "
 				+           "E.FIRST_NAME || ' ' || E.LAST_NAME AS MANAGER_NAME, "
 				+ 			"L.STREET_ADDRESS "
 				+ "FROM DEPARTMENTS D "
@@ -123,11 +124,14 @@ public class DepartmentDAO {
 			pstmt.setInt(1, departmentId);
 			
 			rs = pstmt.executeQuery();
-			if(rs.next()) {
+			
+			while(rs.next()) {
 				
 				String departmentName = rs.getString("department_name");
 				String managerName = rs.getString("manager_name");
 				String streetAddress = rs.getString("street_address");
+				
+				dto = new DepartmentDTO();
 				
 				dto.setDepartmentId(departmentId);
 				dto.setDepartmentName(departmentName);
@@ -139,9 +143,9 @@ public class DepartmentDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				conn.close();
-				pstmt.close();
-				rs.close();
+				if(conn != null) conn.close();
+				if(pstmt != null) pstmt.close();
+				if(rs != null) rs.close();
 			} catch (Exception e2) {
 			}
 		}

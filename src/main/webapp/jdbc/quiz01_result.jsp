@@ -18,8 +18,8 @@
 	
 	DepartmentDAO dao = DepartmentDAO.getInstance();
 	DepartmentDTO dto = dao.getInfo(departmentId);
-	request.setAttribute("dto",	dto);
 	
+	request.setAttribute("dto",	dto);
 	request.getRequestDispatcher("quiz01_ok.jsp").forward(request, response);
 
 %>

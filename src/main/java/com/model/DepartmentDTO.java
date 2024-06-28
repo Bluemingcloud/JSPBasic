@@ -18,6 +18,16 @@ public class DepartmentDTO {
 	public DepartmentDTO() {
 	}
 	
+	// Departments 테이블의 속성만 초기화
+	public DepartmentDTO(int departmentId, String departmentName, int managerId, int locationId) {
+		super();
+		this.departmentId = departmentId;
+		this.departmentName = departmentName;
+		this.managerId = managerId;
+		this.locationId = locationId;
+	}
+	
+	// join 한 속성 추가
 	public DepartmentDTO(int departmentId, String departmentName, int managerId, int locationId, String managerName,
 			String streetAddress) {
 		super();
